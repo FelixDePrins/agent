@@ -108,7 +108,7 @@ class Media extends React.Component {
         </Breadcrumb>
         <ControlBar type="row">
           <Tabs>
-            <TimePicker/>
+            <TimePicker handleChange = {console.log(this.state.Date)} />
             <Tab
               label={t('settings.submenu.all')}
               value="all"
