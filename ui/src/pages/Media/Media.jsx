@@ -44,7 +44,6 @@ class Media extends React.Component {
   componentWillUnmount() {
     document.removeEventListener('scroll', this.trackScrolling);
   }
-
   handleClose() {
     this.setState({
       open: false,
@@ -87,12 +86,8 @@ class Media extends React.Component {
       currentRecording: file,
     });
   }
-  test(){
-    console.log("test")
-  }
-
   render() {
-    const { events, eventsLoaded, t } = this.props;
+    const { events, dispatchGetEvents, eventsLoaded, t } = this.props;
     const { isScrolling, open, currentRecording } = this.state;
     return (
       <div id="media">
@@ -111,7 +106,7 @@ class Media extends React.Component {
         </Breadcrumb>
         <ControlBar type="row">
           <Tabs>
-            <TimePicker callBack={this.test()} />
+            <TimePicker callBack={dispatchGetEvents} />
             <Tab
               label={t('settings.submenu.all')}
               value="all"

@@ -12,6 +12,7 @@ class TimePicker extends React.PureComponent {
       Date: new Date(),
       placeholderTranslate: t('timepicker.placeholder'),
     };
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange = (event) => {
@@ -20,8 +21,17 @@ class TimePicker extends React.PureComponent {
       placeholderTranslate: t('timepicker.placeholder'),
     });
     const { callBack } = this.props;
+
     if (callBack) {
-      callBack();
+      const filter = {
+        timestamp_offset_start: 0,
+        timestamp_offset_end: Math.floor(this.state.Date.getTime() / 1000),
+        number_of_elements: 12,
+        isScrolling: false,
+        open: false,
+        currentRecording: '',
+      };
+      callBack(filter);
     }
   };
 
@@ -30,7 +40,7 @@ class TimePicker extends React.PureComponent {
       <DateTimePickerComponent
         placeholder={this.state.placeholderTranslate}
         id="datetimepicker"
-        strictMode={true}
+        strictMode="true"
         max={this.maxDate}
         onChange={this.handleChange}
         value={this.state.Date}
