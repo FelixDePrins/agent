@@ -5,7 +5,11 @@ import { t } from 'i18next';
 
 class TimePicker extends React.PureComponent {
   maxDate = new Date(new Date());
-  
+  constructor(props)
+  {
+    super(props);
+    this.state = value;
+  }
 
   handleChange = (event) => {
     this.Date = event.value;
