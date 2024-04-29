@@ -87,6 +87,9 @@ class Media extends React.Component {
       currentRecording: file,
     });
   }
+  test(){
+    console.log("test")
+  }
 
   render() {
     const { events, eventsLoaded, t } = this.props;
@@ -108,7 +111,7 @@ class Media extends React.Component {
         </Breadcrumb>
         <ControlBar type="row">
           <Tabs>
-            <TimePicker handleChange = {console.log(this.state.Date)} />
+            <TimePicker callBack={this.test()} />
             <Tab
               label={t('settings.submenu.all')}
               value="all"

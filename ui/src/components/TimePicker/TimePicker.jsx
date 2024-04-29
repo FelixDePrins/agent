@@ -1,34 +1,39 @@
-import { DateTimePickerComponent } from '@syncfusion/ej2-react-calendars';
 import React from 'react';
+import { DateTimePickerComponent } from '@syncfusion/ej2-react-calendars';
 import './TimePicker.scss';
 import { t } from 'i18next';
 
 class TimePicker extends React.PureComponent {
-  maxDate = new Date(new Date());
-  
+  maxDate = new Date();
+
   constructor(props) {
     super(props);
     this.state = {
-       Date: new Date(new Date()),
+      Date: new Date(),
+      placeholderTranslate: t('timepicker.placeholder'),
     };
-    this.handleChange = this.handleChange.bind(this);
- }
+  }
 
   handleChange = (event) => {
     this.setState({
-      Date: event.value
-    })
+      Date: event.value,
+      placeholderTranslate: t('timepicker.placeholder'),
+    });
+    const { callBack } = this.props;
+    if (callBack) {
+      callBack();
+    }
   };
 
   render() {
     return (
       <DateTimePickerComponent
-        placeholder={t('timepicker.placeholder')}
+        placeholder={this.state.placeholderTranslate}
         id="datetimepicker"
-        strictMode="true"
+        strictMode={true}
         max={this.maxDate}
         onChange={this.handleChange}
-        value = {this.Date}
+        value={this.state.Date}
       />
     );
   }
