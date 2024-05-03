@@ -44,6 +44,7 @@ class Media extends React.Component {
   componentWillUnmount() {
     document.removeEventListener('scroll', this.trackScrolling);
   }
+
   handleClose() {
     this.setState({
       open: false,
@@ -86,6 +87,7 @@ class Media extends React.Component {
       currentRecording: file,
     });
   }
+
   render() {
     const { events, dispatchGetEvents, eventsLoaded, t } = this.props;
     const { isScrolling, open, currentRecording } = this.state;
