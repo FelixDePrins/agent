@@ -11,8 +11,6 @@ import {
   ModalFooter,
   ControlBar,
   Tabs,
-  Tab,
-  Icon,
 } from '@kerberos-io/ui';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -109,12 +107,6 @@ class Media extends React.Component {
         <ControlBar type="row">
           <Tabs>
             <TimePicker callBack={dispatchGetEvents} />
-            <Tab
-              label={t('settings.submenu.all')}
-              value="all"
-              onClick={() => this.changeTab('https://twitter.com')}
-              icon={<Icon label="twitter" />}
-            />
           </Tabs>
         </ControlBar>
 

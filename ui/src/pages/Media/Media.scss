@@ -1,6 +1,8 @@
 @import url("https://cdn.syncfusion.com/ej2/material.css");
 #media {
-
+  div.filtering.row{
+    padding:  1rem 0.5rem;
+  }
   #loader {
     display: flex;
     justify-content: center;

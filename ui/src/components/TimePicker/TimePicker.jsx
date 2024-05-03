@@ -5,7 +5,6 @@ import { t } from 'i18next';
 import PropTypes from 'prop-types';
 
 class TimePicker extends React.PureComponent {
-  maxDate = new Date();
 
   constructor(props) {
     super(props);
@@ -13,22 +12,16 @@ class TimePicker extends React.PureComponent {
       Date: new Date(),
       placeholderTranslate: t('timepicker.placeholder'),
     };
+    this.maxDate = new Date();
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange = (event) => {
-    console.log(event);
-    if (event.value !== null) {
-      const elements = document.getElementsByClassName(
-        'stats grid-container --four-columns'
-      );
-      while (elements.length > 0) {
-        elements[0].parentNode.removeChild(elements[0]);
-      }
+  handleChange(event) {
+    
 
+      if (event.value !== null) {
       this.setState({
         Date: event.value,
-        placeholderTranslate: t('timepicker.placeholder'),
       });
 
       const { callBack } = this.props;
@@ -42,11 +35,12 @@ class TimePicker extends React.PureComponent {
           isScrolling: false,
           open: false,
           currentRecording: '',
+          reset: true,
         };
         callBack(filter);
       }
     }
-  };
+  }
 
   render() {
     const { placeholderTranslate, Date } = this.state;
